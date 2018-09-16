@@ -76,15 +76,16 @@ private int c = 0;
 		if (deck.getDeck().size() < 27) {
 			deck = new Deck();
 		}
-		shuffle();
+		deck.shuffle();
 		Hand player = new Hand("Player");
 		Hand dealer = new Hand("Dealer");
 		dealCard(player);
-		dealCard(dealer);
+		dealCard(dealer); // Dealer's "second" card; will be visible to the player
+		System.out.println("Dealer keeps his first card hidden and shows his second card here: ");
 		showCards(dealer);
 		showHandValue(dealer);
 		dealCard(player);
-		dealCard(dealer);
+		dealCard(dealer); // Dealer's "first" card; kept hidden from the player
 		if (c == 1) {
 			player = null;
 			player = new Hand("Player", "c");
@@ -108,7 +109,7 @@ private int c = 0;
 				stayDealPlayer = false;
 				break;
 			case "r":
-				remainingCardsInDeck();
+				deck.remainingCardsInDeck();
 				break;
 			case "m":
 				showCards(player);
@@ -117,7 +118,7 @@ private int c = 0;
 				showHandValue(player);
 				break;
 			case "d":
-				showDeck();
+				deck.showDeck();
 				break;
 
 			default:
@@ -214,16 +215,4 @@ private int c = 0;
 		System.out.println(hand.getName() + " hand value " +   hand.getHandValue());
 	}
 	
-	public void showDeck() {  //d
-		deck.showDeck();
-	}
-	
-	public void remainingCardsInDeck() { //r
-		deck.remainingCardsInDeck();
-	}
-	
-	public void shuffle() { //s
-		deck.shuffle();
-	}
-
 }

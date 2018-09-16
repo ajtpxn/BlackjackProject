@@ -21,15 +21,6 @@ public class Hand {
 		return hand;
 	}
 
-//	public int getHandValue() {
-//		int value = 0;
-//		for (Card card : hand) {
-//			value = value + card.getRank().getValue();
-//		}
-//		return value;
-//	}
-	
-	
 	public void setHand(List<Card> hand) {
 		this.hand = hand;
 	}
@@ -50,7 +41,6 @@ public class Hand {
 		this.name = name;
 	}
 	
-	private Deck myDeck = new Deck();
 	
 	public int getHandValue() {
 		int value = 0;
@@ -66,32 +56,36 @@ public class Hand {
 		
 		return value;
 	}
+	private Deck myDeck = new Deck();
 	
 	public Hand(String name, String c) {
 		super();
 		this.name = name;
 		int tempDeckSize = myDeck.getDeck().size();
-		if (tempDeckSize < 2) {
-			myDeck = new Deck();
-		}
-		myDeck.shuffle();
 		int tempValue = 0;
 		int numberOfAces = 0;
-		while (tempValue < 21 && tempDeckSize > 1) {
-			tempDeckSize = myDeck.getDeck().size();
-			Card cardTemp = myDeck.dealCard();
-			if (cardTemp.getRank().ordinal() == 12) {
-				numberOfAces++;
-			}
-			tempValue = getHandValue();
-			int tempValueTwo = cardTemp.getRank().getValue() + getHandValue();
-			if (tempValueTwo < 20 || cardTemp.getRank().ordinal() == 12) {
-				hand.add(cardTemp);
-			}
-			numberOfAces = 0;
-			for (Card card : hand) {
-				if (card.getRank().ordinal() == 12) {
+		while (getHandValue() != 21) {
+
+			while (tempValue < 21 && tempDeckSize > 10) {
+				if (tempDeckSize < 20) {
+					myDeck = new Deck();
+				}
+				myDeck.shuffle();
+				tempDeckSize = myDeck.getDeck().size();
+				Card cardTemp = myDeck.dealCard();
+				if (cardTemp.getRank().ordinal() == 12) {
 					numberOfAces++;
+				}
+				tempValue = getHandValue();
+				int tempValueTwo = cardTemp.getRank().getValue() + tempValue;
+				if (tempValueTwo < 21 || cardTemp.getRank().ordinal() == 12) {
+					hand.add(cardTemp);
+				}
+				numberOfAces = 0;
+				for (Card card : hand) {
+					if (card.getRank().ordinal() == 12) {
+						numberOfAces++;
+					}
 				}
 			}
 			
