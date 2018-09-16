@@ -30,7 +30,7 @@ How to run this program:
 * The game is immediately over if either player gets above 21.
 * The winner is the one with more points (below 21).
 
-# Card Values ###
+### Card Values ###
 
 Card values are as follows:
 * Number cards have the value that corresponds to their number
