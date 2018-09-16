@@ -29,6 +29,7 @@ How to run this program:
 * Once the player has completed their turn the dealer will begin their turn, automatically hitting or staying according to the Blackjack rules.
 * The game is immediately over if either player gets above 21.
 * The winner is the one with more points (below 21).
+* Overview from Wikipedia: [https://en.wikipedia.org/wiki/Blackjack]
 
 ### Card Values ###
 
