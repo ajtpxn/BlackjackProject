@@ -75,6 +75,7 @@ private Deck deck = new Deck();
 		dealCard(dealer);
 		showCards(player);
 		showHandValue(player);
+		int c = 0;
 		boolean stayDealPlayer = true;
 		while (stayDealPlayer) {
 			System.out.println("Would you like to (h)it or (s)tay?: ");
@@ -103,64 +104,69 @@ private Deck deck = new Deck();
 			case "d":
 				showDeck();
 				break;
+			case "c":
+				c = 1;
+				break;
 
 			default:
+				System.out.println("Invalid input.");
 				break;
 			}
 			
-			if (player.getHandValue() > 21) {
+			if (player.getHandValue() > 21 && c != 1) {
 				System.out.println();
 				System.out.println("You busted. Sorry!");
+				stayDealPlayer = false;
+				input = "q";
+			}
+			else if (c == 1) {
 				stayDealPlayer = false;
 				input = "q";
 			}
 
 		}
 		
-		System.out.println("Dealer finishing.");
-		dealerFinishes(dealer);
+		dealerFinishes(dealer); // dealer finishes playing
 
 		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
+		showHandValue(player); //player value
+		showHandValue(dealer); //dealer value
 		System.out.println();
 		
 		
-		if (dealer.getHandValue() <= 21) {
-			System.out.println("dealer.getHandValue() <= 21");
-			if (player.getHandValue() < dealer.getHandValue()) {
-				System.out.println("player.getHandValue() < dealer.getHandValue()");
+		if (dealer.getHandValue() > 21 && c != 1) {
+			System.out.println("Dealer busted.");
+			System.out.println("You win!");
+		}
+		else if (player.getHandValue() > 21 && c != 1) {
+			System.out.println("You busted!");
+			System.out.println("Dealer wins.");
+		}
+		else {
+			System.out.println("Nobody busted.");
+			if (c == 1) {
+				System.out.println();
+				System.out.println("You win!");
+				System.out.println();
+			}
+			else if (player.getHandValue() < dealer.getHandValue()) {
+				System.out.println();
 				System.out.println("Dealer wins.");
 				System.out.println();
 			}
-			
-			else {
-				System.out.println("dealer.getHandValue() <= 21 ----- else ");
-				if (player.getHandValue() <= 21) {
-					System.out.println("player.getHandValue() <= 21  "+player.getHandValue());
-					if (player.getHandValue() > dealer.getHandValue()) {
-						System.out.println();
-						System.out.println("You win!");
-						System.out.println();
-					}
-					else {
-						System.out.println();
-						System.out.println("Push.");
-						System.out.println();
-					}
-				}
+			else if (player.getHandValue() > dealer.getHandValue()) {
+				System.out.println();
+				System.out.println("You win!");
+				System.out.println();
 			}
+			else {
+				System.out.println();
+				System.out.println("Push.");
+				System.out.println();
+			}
+			
 		}
-
+			
 
 		System.out.println();
 		System.out.println("*********************************************************************************");
@@ -177,7 +183,7 @@ private Deck deck = new Deck();
 	}
 	
 	private void dealerFinishes(Hand hand) { //s
-		System.out.println("Dealer finishing.");
+		System.out.println("Dealer playing.");
 		showCards(hand);
 		showHandValue(hand);
 		while (hand.getHandValue() < 17) {
@@ -204,6 +210,7 @@ private Deck deck = new Deck();
 	public void showDeck() {  //d
 		deck.showDeck();
 	}
+	
 	
 	public void remainingCardsInDeck() { //r
 		deck.remainingCardsInDeck();

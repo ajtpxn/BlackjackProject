@@ -29,16 +29,21 @@ public class Hand {
 		return value;
 	}
 	
+	
 	public void setHand(List<Card> hand) {
 		this.hand = hand;
 	}
+	
 	
 	public void addCard(Card card) {
 		hand.add(card);
 	}
 	
 	
-	
+	public Hand(String name, String c) {
+		super();
+		this.name = name;
+	}
 
 	
 	public Hand(String name, List<Card> hand) {

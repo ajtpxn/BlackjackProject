@@ -31,7 +31,13 @@ public class Dealing {
 		boolean stay = true;
 		while (stay) {
 			String input = null;
-			System.out.println("Please input the number of cards you want, \"s\" for shuffle or \"q\" for quit: ");
+			System.out.print("Please input the number of cards you want,\n"
+					+"\"q\" for quit \n"
+					+ "\"s\" for shuffle \n"
+					+ "\"r\" for number of cards remaning in deck \n"
+					+ "\"d\" show cards in deck \n"
+					+ "\"m\" for show my cards \n"
+					+ "input: ");
 			input = scanner.nextLine();
 
 			if (!input.isEmpty()) {
@@ -52,7 +58,7 @@ public class Dealing {
 					showMyCards();
 				}
 				else {
-					Pattern pattern = Pattern.compile("[1*2*3*4*5*6*7*8*9*0*]*");
+					Pattern pattern = Pattern.compile("[0-9]*");
 					Matcher patternMatch = pattern.matcher(input);
 					boolean inputMatchesPattern = patternMatch.matches();
 					if (inputMatchesPattern) {
