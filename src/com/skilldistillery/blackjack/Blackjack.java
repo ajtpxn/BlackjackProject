@@ -9,7 +9,8 @@ import java.util.regex.Pattern;
 public class Blackjack {
 	
 private Deck deck = new Deck();
-	
+
+private int c = 0;
 	
 	private static Scanner scanner = new Scanner(System.in);
 
@@ -39,6 +40,10 @@ private Deck deck = new Deck();
 			case "N":
 				stayPlay = false;
 				break;
+			case "c":
+				c = 1;
+				deal();
+				break;
 			case "p":
 				deal();
 				break;
@@ -51,6 +56,12 @@ private Deck deck = new Deck();
 			case "Y":
 				deal();
 				break;
+			case "h":
+				deal();
+				break;
+			case "s":
+				deal();
+				break;
 
 			default:
 				System.out.println("Invalid input.");
@@ -61,9 +72,10 @@ private Deck deck = new Deck();
 	
 	
 	public void deal() {
-
-
-
+		
+		if (deck.getDeck().size() < 27) {
+			deck = new Deck();
+		}
 		shuffle();
 		Hand player = new Hand("Player");
 		Hand dealer = new Hand("Dealer");
@@ -73,9 +85,12 @@ private Deck deck = new Deck();
 		showHandValue(dealer);
 		dealCard(player);
 		dealCard(dealer);
+		if (c == 1) {
+			player = null;
+			player = new Hand("Player", "c");
+		}
 		showCards(player);
 		showHandValue(player);
-		int c = 0;
 		boolean stayDealPlayer = true;
 		while (stayDealPlayer) {
 			System.out.println("Would you like to (h)it or (s)tay?: ");
@@ -104,16 +119,13 @@ private Deck deck = new Deck();
 			case "d":
 				showDeck();
 				break;
-			case "c":
-				c = 1;
-				break;
 
 			default:
 				System.out.println("Invalid input.");
 				break;
 			}
 			
-			if (player.getHandValue() > 21 && c != 1) {
+			if (player.getHandValue() > 21) {
 				System.out.println();
 				System.out.println("You busted. Sorry!");
 				stayDealPlayer = false;
@@ -134,22 +146,17 @@ private Deck deck = new Deck();
 		System.out.println();
 		
 		
-		if (dealer.getHandValue() > 21 && c != 1) {
-			System.out.println("Dealer busted.");
-			System.out.println("You win!");
-		}
-		else if (player.getHandValue() > 21 && c != 1) {
+		if (player.getHandValue() > 21) {
 			System.out.println("You busted!");
 			System.out.println("Dealer wins.");
 		}
+		else if (dealer.getHandValue() > 21) {
+			System.out.println("Dealer busted.");
+			System.out.println("You win!");
+		}
 		else {
 			System.out.println("Nobody busted.");
-			if (c == 1) {
-				System.out.println();
-				System.out.println("You win!");
-				System.out.println();
-			}
-			else if (player.getHandValue() < dealer.getHandValue()) {
+			if (player.getHandValue() < dealer.getHandValue()) {
 				System.out.println();
 				System.out.println("Dealer wins.");
 				System.out.println();
@@ -166,7 +173,7 @@ private Deck deck = new Deck();
 			}
 			
 		}
-			
+		c = 0;	
 
 		System.out.println();
 		System.out.println("*********************************************************************************");
@@ -210,7 +217,6 @@ private Deck deck = new Deck();
 	public void showDeck() {  //d
 		deck.showDeck();
 	}
-	
 	
 	public void remainingCardsInDeck() { //r
 		deck.remainingCardsInDeck();
