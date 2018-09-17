@@ -1,5 +1,7 @@
 ## Blackjack ##
 
+![Blackjack](250px-BlackJack6.png)
+
 ### Blackjack Project, Week Three, Skill Distillery ###
 
 How to run this program:
@@ -10,7 +12,7 @@ How to run this program:
 4. Run in the terminal with "java com.skilldistillery.blackjack.Blackjack"
 5. After that it should be pretty self explanatory
 
-### Technologies Used ###
+#### Technologies Used ####
 
 * Java object-oriented classes
 * Java classes whose fields are objects
@@ -18,6 +20,7 @@ How to run this program:
 * Used collection types to organize and manage data
 * Used conditionals to create game logic
 * Eclipse
+* The debug perspective and tools in Eclipse
 * Terminal
 * Git
 * GitHub
