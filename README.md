@@ -1,4 +1,4 @@
-# Blackjack        ![Blackjack](250px-BlackJack6.png) #
+# Blackjack &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Blackjack](250px-BlackJack6.png) #
 
 ## Blackjack Project, Week Three, Skill Distillery ##
 
