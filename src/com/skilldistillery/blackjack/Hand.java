@@ -78,7 +78,7 @@ public class Hand {
 				}
 				tempValue = getHandValue();
 				int tempValueTwo = cardTemp.getRank().getValue() + tempValue;
-				if (tempValueTwo < 21 || cardTemp.getRank().ordinal() == 12) {
+				if (tempValueTwo < 21 || cardTemp.getRank() == Rank.ACE) {
 					hand.add(cardTemp);
 				}
 				numberOfAces = 0;

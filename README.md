@@ -1,10 +1,10 @@
-## Blackjack ##
+# Blackjack #
 
 ![Blackjack](250px-BlackJack6.png)
 
-### Blackjack Project, Week Three, Skill Distillery ###
+## Blackjack Project, Week Three, Skill Distillery ##
 
-How to run this program:
+### How to Run this Program ###
 
 1. Download all the files in the folder called "src/com/skilldistillery/blackjack/" that end with .java
 2. Start a terminal (shell)
@@ -12,7 +12,7 @@ How to run this program:
 4. Run in the terminal with "java com.skilldistillery.blackjack.Blackjack"
 5. After that it should be pretty self explanatory
 
-#### Technologies Used ####
+### Technologies Used ###
 
 * Java object-oriented classes
 * Java classes whose fields are objects
