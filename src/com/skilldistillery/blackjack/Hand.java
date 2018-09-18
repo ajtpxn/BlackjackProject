@@ -49,21 +49,20 @@ public class Hand {
 			
 			value = value + cardValue;
 			
-			if (value > 21 && card.getRank().ordinal() == 12) {
+			if (value > 21 && card.getRank() == Rank.ACE) {
 				value = value - 10;
 			}
 		}
 		
 		return value;
 	}
-	private Deck myDeck = new Deck();
 	
 	public Hand(String name, String c) {
 		super();
+		Deck myDeck = new Deck();
 		this.name = name;
 		int tempDeckSize = myDeck.getDeck().size();
 		int tempValue = 0;
-		int numberOfAces = 0;
 		while (getHandValue() != 21) {
 
 			while (tempValue < 21 && tempDeckSize > 10) {
@@ -73,19 +72,10 @@ public class Hand {
 				myDeck.shuffle();
 				tempDeckSize = myDeck.getDeck().size();
 				Card cardTemp = myDeck.dealCard();
-				if (cardTemp.getRank().ordinal() == 12) {
-					numberOfAces++;
-				}
 				tempValue = getHandValue();
 				int tempValueTwo = cardTemp.getRank().getValue() + tempValue;
 				if (tempValueTwo < 21 || cardTemp.getRank() == Rank.ACE) {
 					hand.add(cardTemp);
-				}
-				numberOfAces = 0;
-				for (Card card : hand) {
-					if (card.getRank().ordinal() == 12) {
-						numberOfAces++;
-					}
 				}
 			}
 			
